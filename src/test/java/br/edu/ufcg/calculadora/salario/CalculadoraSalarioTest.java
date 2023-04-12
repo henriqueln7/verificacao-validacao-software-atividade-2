@@ -1,6 +1,5 @@
 package br.edu.ufcg.calculadora.salario;
 
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -36,6 +35,20 @@ class CalculadoraSalarioTest {
     void seOCargoForDesenvolvedorEOSalarioForAcimaOuIgualA3000Desconta20(BigDecimal salarioBase, BigDecimal salarioEsperado) {
         CalculadoraSalario calculadoraSalario = new CalculadoraSalario();
         Funcionario funcionario = new Funcionario("Henrique", salarioBase, "DESENVOLVEDOR");
+        assertThat(calculadoraSalario.calculaSalario(funcionario)).isEqualByComparingTo(salarioEsperado);
+    }
+
+
+    @ParameterizedTest
+    @CsvSource({
+            "1999.99, 1699.9915",
+            "1990, 1691.5",
+            "1500, 1275",
+    })
+    @DisplayName("se o cargo for DBA e o salario for abaixo de 2000, desconta 15%")
+    void seOCargoForDbaEOSalarioForAbaixoDe2000Desconta15(BigDecimal salarioBase, BigDecimal salarioEsperado) {
+        CalculadoraSalario calculadoraSalario = new CalculadoraSalario();
+        Funcionario funcionario = new Funcionario("Henrique", salarioBase, "DBA");
         assertThat(calculadoraSalario.calculaSalario(funcionario)).isEqualByComparingTo(salarioEsperado);
     }
 
