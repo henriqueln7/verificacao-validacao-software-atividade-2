@@ -16,8 +16,8 @@ public class Funcionario {
     public BigDecimal getSalarioBase() {
         return salarioBase;
     }
-
-    public boolean temCargo(Cargo cargo) {
-        return this.cargo == cargo;
+    
+    public Cargo getCargo() {
+        return this.cargo;
     }
 }
