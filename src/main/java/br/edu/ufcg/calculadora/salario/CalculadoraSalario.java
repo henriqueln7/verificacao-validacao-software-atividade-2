@@ -13,6 +13,6 @@ import java.math.BigDecimal;
 public class CalculadoraSalario {
 
     public BigDecimal calculaSalario(Funcionario funcionario) {
-        return BigDecimal.valueOf(1800);
+        return funcionario.getSalarioBase().multiply(BigDecimal.valueOf(0.9));
     }
 }
