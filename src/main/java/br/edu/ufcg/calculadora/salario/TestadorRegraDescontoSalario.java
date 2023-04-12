@@ -5,9 +5,9 @@ import java.math.BigDecimal;
 public class TestadorRegraDescontoSalario implements RegraDescontoSalario {
     @Override
     public BigDecimal calculaSalario(Funcionario funcionario) {
-        if (funcionario.getSalarioBase().compareTo(new BigDecimal("2000")) >= 0) {
-            return funcionario.getSalarioBase().multiply(BigDecimal.valueOf(0.75));
+        if (funcionario.temSalarioIgualOuMaiorQue(new BigDecimal("2000"))) {
+            return funcionario.salarioAbatido(0.25);
         }
-        return funcionario.getSalarioBase().multiply(BigDecimal.valueOf(0.85));
+        return funcionario.salarioAbatido(0.15);
     }
 }

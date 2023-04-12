@@ -5,10 +5,10 @@ import java.math.BigDecimal;
 public class GerenteRegraDescontoSalario implements RegraDescontoSalario {
     @Override
     public BigDecimal calculaSalario(Funcionario funcionario) {
-        if (funcionario.getSalarioBase().compareTo(new BigDecimal("5000")) >= 0) {
-            return funcionario.getSalarioBase().multiply(BigDecimal.valueOf(0.7));
+        if (funcionario.temSalarioIgualOuMaiorQue(new BigDecimal("5000"))) {
+            return funcionario.salarioAbatido(0.3);
         }
 
-        return funcionario.getSalarioBase().multiply(BigDecimal.valueOf(0.8));
+        return funcionario.salarioAbatido(0.2);
     }
 }

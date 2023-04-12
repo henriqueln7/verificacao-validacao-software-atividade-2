@@ -16,7 +16,15 @@ public class Funcionario {
     public BigDecimal getSalarioBase() {
         return salarioBase;
     }
-    
+
+    public BigDecimal salarioAbatido(double porcentagem) {
+        return this.salarioBase.multiply(BigDecimal.valueOf(1 - porcentagem));
+    }
+
+    public boolean temSalarioIgualOuMaiorQue(BigDecimal salario) {
+        return this.salarioBase.compareTo(salario) >= 0;
+    }
+
     public Cargo getCargo() {
         return this.cargo;
     }
