@@ -13,9 +13,15 @@ import java.math.BigDecimal;
 public class CalculadoraSalario {
 
     public BigDecimal calculaSalario(Funcionario funcionario) {
-        if (funcionario.getSalarioBase().compareTo(new BigDecimal("3000")) >= 0) {
-            return funcionario.getSalarioBase().multiply(BigDecimal.valueOf(0.8));
+
+        if (funcionario.getCargo().equals("DESENVOLVEDOR")) {
+            if (funcionario.getSalarioBase().compareTo(new BigDecimal("3000")) >= 0) {
+                return funcionario.getSalarioBase().multiply(BigDecimal.valueOf(0.8));
+            }
+            return funcionario.getSalarioBase().multiply(BigDecimal.valueOf(0.9));
         }
-        return funcionario.getSalarioBase().multiply(BigDecimal.valueOf(0.9));
+
+        return funcionario.getSalarioBase().multiply(BigDecimal.valueOf(0.85));
+
     }
 }

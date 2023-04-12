@@ -16,4 +16,8 @@ public class Funcionario {
     public BigDecimal getSalarioBase() {
         return salarioBase;
     }
+
+    public String getCargo() {
+        return cargo;
+    }
 }
