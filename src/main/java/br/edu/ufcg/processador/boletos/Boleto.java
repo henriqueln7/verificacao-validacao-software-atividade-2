@@ -7,5 +7,9 @@ public class Boleto {
         this.valor = valor;
 
     }
+
+    public Object getValor() {
+        return valor;
+    }
     
 }

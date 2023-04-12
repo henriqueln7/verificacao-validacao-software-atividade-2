@@ -1,6 +1,7 @@
 package br.edu.ufcg;
 import org.junit.jupiter.api.Test;
 import br.edu.ufcg.processador.boletos.Boleto;
+import static org.junit.jupiter.api.Assertions.*;
 
 class BoletoTest{
 
