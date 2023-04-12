@@ -7,6 +7,8 @@ import org.junit.jupiter.params.provider.CsvSource;
 
 import java.math.BigDecimal;
 
+import static br.edu.ufcg.calculadora.salario.Cargo.DBA;
+import static br.edu.ufcg.calculadora.salario.Cargo.DESENVOLVEDOR;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.fail;
 
@@ -21,7 +23,7 @@ class CalculadoraSalarioTest {
     @DisplayName("se o cargo for DESENVOLVEDOR e o salario for abaixo de 3000, desconta 10%")
     void seOCargoForDesenvolvedorEOSalarioForAbaixoDe3000Desconta10(BigDecimal salarioBase, BigDecimal salarioEsperado) {
         CalculadoraSalario calculadoraSalario = new CalculadoraSalario();
-        Funcionario funcionario = new Funcionario("Henrique", salarioBase, "DESENVOLVEDOR");
+        Funcionario funcionario = new Funcionario("Henrique", salarioBase, DESENVOLVEDOR);
         assertThat(calculadoraSalario.calculaSalario(funcionario)).isEqualByComparingTo(salarioEsperado);
     }
 
@@ -34,7 +36,7 @@ class CalculadoraSalarioTest {
     @DisplayName("se o cargo for DESENVOLVEDOR e o salario for acima ou igual a 3000, desconta 20%")
     void seOCargoForDesenvolvedorEOSalarioForAcimaOuIgualA3000Desconta20(BigDecimal salarioBase, BigDecimal salarioEsperado) {
         CalculadoraSalario calculadoraSalario = new CalculadoraSalario();
-        Funcionario funcionario = new Funcionario("Henrique", salarioBase, "DESENVOLVEDOR");
+        Funcionario funcionario = new Funcionario("Henrique", salarioBase, DESENVOLVEDOR);
         assertThat(calculadoraSalario.calculaSalario(funcionario)).isEqualByComparingTo(salarioEsperado);
     }
 
@@ -48,7 +50,7 @@ class CalculadoraSalarioTest {
     @DisplayName("se o cargo for DBA e o salario for abaixo de 2000, desconta 15%")
     void seOCargoForDbaEOSalarioForAbaixoDe2000Desconta15(BigDecimal salarioBase, BigDecimal salarioEsperado) {
         CalculadoraSalario calculadoraSalario = new CalculadoraSalario();
-        Funcionario funcionario = new Funcionario("Henrique", salarioBase, "DBA");
+        Funcionario funcionario = new Funcionario("Henrique", salarioBase, DBA);
         assertThat(calculadoraSalario.calculaSalario(funcionario)).isEqualByComparingTo(salarioEsperado);
     }
 
@@ -62,7 +64,7 @@ class CalculadoraSalarioTest {
     @DisplayName("se o cargo for DBA e o salario for acima ou igual a 2000, desconta 25%")
     void seOCargoForDbaEOSalarioForAcimaOuIgualA2000Desconta25(BigDecimal salarioBase, BigDecimal salarioEsperado) {
         CalculadoraSalario calculadoraSalario = new CalculadoraSalario();
-        Funcionario funcionario = new Funcionario("Henrique", salarioBase, "DBA");
+        Funcionario funcionario = new Funcionario("Henrique", salarioBase, DBA);
         assertThat(calculadoraSalario.calculaSalario(funcionario)).isEqualByComparingTo(salarioEsperado);
     }
 }

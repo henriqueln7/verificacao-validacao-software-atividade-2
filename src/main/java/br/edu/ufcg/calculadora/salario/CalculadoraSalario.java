@@ -2,6 +2,8 @@ package br.edu.ufcg.calculadora.salario;
 
 import java.math.BigDecimal;
 
+import static br.edu.ufcg.calculadora.salario.Cargo.DESENVOLVEDOR;
+
 /**
  * Deve-se implementar uma calculadora de salário de funcionários. Um funcionário contém nome, e-mail, salário-base e cargo. De acordo com seu cargo, a regra para cálculo do salário líquido é diferente:
  *
@@ -14,7 +16,7 @@ public class CalculadoraSalario {
 
     public BigDecimal calculaSalario(Funcionario funcionario) {
 
-        if (funcionario.getCargo().equals("DESENVOLVEDOR")) {
+        if (funcionario.temCargo(DESENVOLVEDOR)) {
             if (funcionario.getSalarioBase().compareTo(new BigDecimal("3000")) >= 0) {
                 return funcionario.getSalarioBase().multiply(BigDecimal.valueOf(0.8));
             }

@@ -5,9 +5,9 @@ import java.math.BigDecimal;
 public class Funcionario {
     private final String nome;
     private final BigDecimal salarioBase;
-    private final String cargo;
+    private final Cargo cargo;
 
-    public Funcionario(String nome, BigDecimal salarioBase, String cargo) {
+    public Funcionario(String nome, BigDecimal salarioBase, Cargo cargo) {
         this.nome = nome;
         this.salarioBase = salarioBase;
         this.cargo = cargo;
@@ -17,7 +17,7 @@ public class Funcionario {
         return salarioBase;
     }
 
-    public String getCargo() {
-        return cargo;
+    public boolean temCargo(Cargo cargo) {
+        return this.cargo == cargo;
     }
 }
