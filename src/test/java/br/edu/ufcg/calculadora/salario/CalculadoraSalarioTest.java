@@ -52,4 +52,17 @@ class CalculadoraSalarioTest {
         assertThat(calculadoraSalario.calculaSalario(funcionario)).isEqualByComparingTo(salarioEsperado);
     }
 
+
+    @ParameterizedTest
+    @CsvSource({
+            "2000, 1500",
+            "5000, 3750",
+            "6000, 4500",
+    })
+    @DisplayName("se o cargo for DBA e o salario for acima ou igual a 2000, desconta 25%")
+    void seOCargoForDbaEOSalarioForAcimaOuIgualA2000Desconta25(BigDecimal salarioBase, BigDecimal salarioEsperado) {
+        CalculadoraSalario calculadoraSalario = new CalculadoraSalario();
+        Funcionario funcionario = new Funcionario("Henrique", salarioBase, "DBA");
+        assertThat(calculadoraSalario.calculaSalario(funcionario)).isEqualByComparingTo(salarioEsperado);
+    }
 }
