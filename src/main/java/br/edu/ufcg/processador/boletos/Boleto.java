@@ -1,24 +1,27 @@
 package br.edu.ufcg.processador.boletos;
 
 public class Boleto {
+    private int codigo;
+    private String data;
     private int valor;
     
     public Boleto(Integer codigo, String data, int valor){
+        this.codigo = codigo;
+        this.data = data;
         this.valor = valor;
-
     }
 
     // recupera valor do boleto
     public Object getValor() {
-        return valor;
+        return this.valor;
     }
 
     public Integer getCodigo() {
-        return 1;
+        return this.codigo;
     }
 
     public String getData() {
-        return "12-04-2023";
+        return this.data;
     }
     
 }
