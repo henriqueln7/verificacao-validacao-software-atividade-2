@@ -7,6 +7,7 @@ import org.junit.jupiter.params.provider.CsvSource;
 
 import java.math.BigDecimal;
 
+import static br.edu.ufcg.calculadora.salario.Cargo.*;
 import static br.edu.ufcg.calculadora.salario.Cargo.DBA;
 import static br.edu.ufcg.calculadora.salario.Cargo.DESENVOLVEDOR;
 import static org.assertj.core.api.Assertions.assertThat;
@@ -77,7 +78,7 @@ class CalculadoraSalarioTest {
     @DisplayName("se o cargo for TESTADOR e o salario for abaixo de 2000, desconta 15%")
     void seOCargoForTestadorEOSalarioForAbaixoDe2000Desconta15(BigDecimal salarioBase, BigDecimal salarioEsperado) {
         CalculadoraSalario calculadoraSalario = new CalculadoraSalario();
-        Funcionario funcionario = new Funcionario("Henrique", salarioBase, Cargo.TESTADOR);
+        Funcionario funcionario = new Funcionario("Henrique", salarioBase, TESTADOR);
         assertThat(calculadoraSalario.calculaSalario(funcionario)).isEqualByComparingTo(salarioEsperado);
     }
 
@@ -90,7 +91,20 @@ class CalculadoraSalarioTest {
     @DisplayName("se o cargo for TESTADOR e o salario for acima ou igual a 2000, desconta 25%")
     void seOCargoForTestadorEOSalarioForAcimaOuIgualA2000Desconta25(BigDecimal salarioBase, BigDecimal salarioEsperado) {
         CalculadoraSalario calculadoraSalario = new CalculadoraSalario();
-        Funcionario funcionario = new Funcionario("Henrique", salarioBase, Cargo.TESTADOR);
+        Funcionario funcionario = new Funcionario("Henrique", salarioBase, TESTADOR);
+        assertThat(calculadoraSalario.calculaSalario(funcionario)).isEqualByComparingTo(salarioEsperado);
+    }
+
+    @ParameterizedTest
+    @CsvSource({
+            "4999.99, 3999.992",
+            "4990, 3992",
+            "4000, 3200",
+    })
+    @DisplayName("se o cargo for GERENTE e o salario for abaixo de 5000, desconta 20%")
+    void seOCargoForGerenteEOSalarioForAbaixoDe5000Desconta20(BigDecimal salarioBase, BigDecimal salarioEsperado) {
+        CalculadoraSalario calculadoraSalario = new CalculadoraSalario();
+        Funcionario funcionario = new Funcionario("Henrique", salarioBase, GERENTE);
         assertThat(calculadoraSalario.calculaSalario(funcionario)).isEqualByComparingTo(salarioEsperado);
     }
 }
