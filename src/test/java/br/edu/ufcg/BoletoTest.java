@@ -9,9 +9,9 @@ class BoletoTest{
 
     @Test
     public void createBoleto() {
-        boleto = new Boleto(1, 12-04-2023, 500);
+        boleto = new Boleto(1, "12-04-2023", 500);
         assertEquals(1, boleto.getCodigo());
-        assertEquals(500, boleto.getData());
+        assertEquals("12-04-2023", boleto.getData());
         assertEquals(500, boleto.getValor());
     }
 }
