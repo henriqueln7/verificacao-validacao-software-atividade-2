@@ -107,4 +107,17 @@ class CalculadoraSalarioTest {
         Funcionario funcionario = new Funcionario("Henrique", salarioBase, GERENTE);
         assertThat(calculadoraSalario.calculaSalario(funcionario)).isEqualByComparingTo(salarioEsperado);
     }
+
+    @ParameterizedTest
+    @CsvSource({
+            "5000, 3500",
+            "6000, 4200",
+            "7000, 4900",
+    })
+    @DisplayName("se o cargo for GERENTE e o salario for acima ou igual a 5000, desconta 30%")
+    void seOCargoForGerenteEOSalarioForAcimaOuIgualA5000Desconta30(BigDecimal salarioBase, BigDecimal salarioEsperado) {
+        CalculadoraSalario calculadoraSalario = new CalculadoraSalario();
+        Funcionario funcionario = new Funcionario("Henrique", salarioBase, GERENTE);
+        assertThat(calculadoraSalario.calculaSalario(funcionario)).isEqualByComparingTo(salarioEsperado);
+    }
 }
