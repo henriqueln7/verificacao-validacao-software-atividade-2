@@ -6,6 +6,6 @@ import java.math.BigDecimal;
 public class CalculadoraSalario {
 
     public BigDecimal calculaSalario(Funcionario funcionario) {
-        return FabricaRegraSalario.obtemRegraDo(funcionario.getCargo()).calculaSalario(funcionario);
+        return FabricaRegraSalario.obtemRegraDo(funcionario.cargo()).calculaSalario(funcionario);
     }
 }
