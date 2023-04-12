@@ -21,6 +21,9 @@ public class CalculadoraSalario {
             return funcionario.getSalarioBase().multiply(BigDecimal.valueOf(0.9));
         }
 
+        if (funcionario.getSalarioBase().compareTo(new BigDecimal("2000")) >= 0) {
+            return funcionario.getSalarioBase().multiply(BigDecimal.valueOf(0.75));
+        }
         return funcionario.getSalarioBase().multiply(BigDecimal.valueOf(0.85));
 
     }
