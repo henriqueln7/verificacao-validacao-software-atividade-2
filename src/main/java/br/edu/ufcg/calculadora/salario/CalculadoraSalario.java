@@ -37,8 +37,10 @@ public class CalculadoraSalario {
             return funcionario.getSalarioBase().multiply(BigDecimal.valueOf(0.85));
         }
 
+        if (funcionario.getSalarioBase().compareTo(new BigDecimal("5000")) >= 0) {
+            return funcionario.getSalarioBase().multiply(BigDecimal.valueOf(0.7));
+        }
+
         return funcionario.getSalarioBase().multiply(BigDecimal.valueOf(0.8));
-
-
     }
 }
