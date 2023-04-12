@@ -1,8 +1,6 @@
-package br.edu.ufcg.processador.boletos;
-import static org.junit.jupiter.api.Assertions.*;
-import org.junit.jupiter.api.BeforeEach;
+package br.edu.ufcg;
 import org.junit.jupiter.api.Test;
-import boleto.Boleto;
+import br.edu.ufcg.processador.boletos.Boleto;
 
 class BoletoTest{
 
@@ -11,5 +9,6 @@ class BoletoTest{
     @Test
     public void createBoleto() {
         boleto = new Boleto(500);
+        assertEquals(500, boleto.getValor());
     }
 }
