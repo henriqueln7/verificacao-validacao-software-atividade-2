@@ -9,6 +9,7 @@ import org.junit.jupiter.params.provider.CsvSource;
 import java.math.BigDecimal;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.fail;
 
 class CalculadoraSalarioTest {
 
@@ -20,6 +21,19 @@ class CalculadoraSalarioTest {
     })
     @DisplayName("se o cargo for DESENVOLVEDOR e o salario for abaixo de 3000, desconta 10%")
     void seOCargoForDesenvolvedorEOSalarioForAbaixoDe3000Desconta10(BigDecimal salarioBase, BigDecimal salarioEsperado) {
+        CalculadoraSalario calculadoraSalario = new CalculadoraSalario();
+        Funcionario funcionario = new Funcionario("Henrique", salarioBase, "DESENVOLVEDOR");
+        assertThat(calculadoraSalario.calculaSalario(funcionario)).isEqualByComparingTo(salarioEsperado);
+    }
+
+    @ParameterizedTest
+    @CsvSource({
+            "3000, 2400",
+            "5000, 4000",
+            "6000, 4800",
+    })
+    @DisplayName("se o cargo for DESENVOLVEDOR e o salario for acima ou igual a 3000, desconta 20%")
+    void seOCargoForDesenvolvedorEOSalarioForAcimaOuIgualA3000Desconta20(BigDecimal salarioBase, BigDecimal salarioEsperado) {
         CalculadoraSalario calculadoraSalario = new CalculadoraSalario();
         Funcionario funcionario = new Funcionario("Henrique", salarioBase, "DESENVOLVEDOR");
         assertThat(calculadoraSalario.calculaSalario(funcionario)).isEqualByComparingTo(salarioEsperado);
