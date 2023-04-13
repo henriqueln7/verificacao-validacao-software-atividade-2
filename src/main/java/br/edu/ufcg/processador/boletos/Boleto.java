@@ -1,14 +1,16 @@
 package br.edu.ufcg.processador.boletos;
 
+import java.math.BigDecimal;
+
 public class Boleto {
     private int codigo;
     private String data;
-    private int valor;
+    private BigDecimal valor;
     
-    public Boleto(Integer codigo, String data, int valor){
+    public Boleto(Integer codigo, String data, BigDecimal bigDecimal){
         this.codigo = codigo;
         this.data = data;
-        this.valor = valor;
+        this.valor = bigDecimal;
     }
 
     // recupera valor do boleto
