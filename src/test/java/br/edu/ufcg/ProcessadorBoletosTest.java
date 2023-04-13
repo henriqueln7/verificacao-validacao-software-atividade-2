@@ -1,8 +1,12 @@
 package br.edu.ufcg;
+
 import org.junit.jupiter.api.Test;
-import br.edu.ufcg.processador.boletos.Boleto;
-import br.edu.ufcg.processador.boletos.Fatura;
-import br.edu.ufcg.processador.boletos.ProcessadorBoletos;
+
+import br.edu.ufcg.calculadora.salario.boletos.Boleto;
+import br.edu.ufcg.calculadora.salario.boletos.Fatura;
+import br.edu.ufcg.calculadora.salario.boletos.Pagamento;
+import br.edu.ufcg.calculadora.salario.boletos.ProcessadorBoletos;
+import br.edu.ufcg.calculadora.salario.boletos.Pagamento.TipoPagamento;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -10,25 +14,78 @@ import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
-class ProcessadorBoletosTest{
+class ProcessadorBoletosTest {
 
     private ProcessadorBoletos processadorBoletos;
 
     @Test
     public void pagaFaturaComUmBoleto() {
         List<Boleto> boletos = new ArrayList<>();
-        Boleto boleto = new Boleto(1, "13-04-2021", new BigDecimal("1500.00"));
+        Boleto boleto = new Boleto("001", "24-09-2023", new BigDecimal("1500.00"));
         boletos.add(boleto);
 
-        Fatura fatura = new Fatura("Cliente A", new BigDecimal("1500.00"), "13-04-2021");
+        Fatura fatura = new Fatura("Cliente A", new BigDecimal("1500.00"), "24-09-2023");
         ProcessadorBoletos processador = new ProcessadorBoletos();
         processador.processa(boletos, fatura);
 
-        assertEquals(fatura.getValor(), new BigDecimal("1500.00"));
+        assertEquals(fatura.getValorTotal(), new BigDecimal("1500.00"));
         assertTrue(fatura.isPaga());
+
+        List<Pagamento> pagamentos = fatura.getPagamentos();
+        assertEquals(pagamentos.size(), 1);
+        Pagamento pagamento = pagamentos.get(0);
+        assertEquals(pagamento.getTipo(), TipoPagamento.BOLETO);
+        assertEquals(pagamento.getData(), "24-09-2023");
+        assertEquals(pagamento.getValorPago(), new BigDecimal("1500.00"));
+    }
+
+    @Test
+    public void testFaturaNaoPagaComBoletosInferioresAoValorTotal() {
+        List<Boleto> boletos = new ArrayList<>();
+        boletos.add(new Boleto("001", "24-09-2023", new BigDecimal("500.00")));
+        boletos.add(new Boleto("002", "24-09-2023", new BigDecimal("400.00")));
+        boletos.add(new Boleto("003", "24-09-2023", new BigDecimal("600.00")));
+
+        Fatura fatura = new Fatura("Cliente A", new BigDecimal("1500.00"), "24-09-2023");
+        ProcessadorBoletos processador = new ProcessadorBoletos();
+        processador.processa(boletos, fatura);
+
+        assertEquals(fatura.getValorTotal(), new BigDecimal("1500.00"));
+        assertTrue(!fatura.isPaga());
+
+        List<Pagamento> pagamentos = fatura.getPagamentos();
+        assertEquals(pagamentos.size(), 3);
+        assertEquals(pagamentos.get(0).getTipo(), TipoPagamento.BOLETO);
+        assertEquals(pagamentos.get(1).getTipo(), TipoPagamento.BOLETO);
+        assertEquals(pagamentos.get(2).getTipo(), TipoPagamento.BOLETO);
+        assertEquals(pagamentos.get(0).getValorPago(), new BigDecimal("500.00"));
+        assertEquals(pagamentos.get(1).getValorPago(), new BigDecimal("400.00"));
+        assertEquals(pagamentos.get(2).getValorPago(), new BigDecimal("600.00"));
+    }
+
+    @Test
+    public void testFaturaPagaComBoletosSuperioresAoValorTotal() {
+        List<Boleto> boletos = new ArrayList<>();
+        boletos.add(new Boleto("001", "24-09-2023", new BigDecimal("1000.00")));
+        boletos.add(new Boleto("002", "24-09-2023", new BigDecimal("500.00")));
+        boletos.add(new Boleto("003", "24-09-2023", new BigDecimal("400.00")));
+
+        Fatura fatura = new Fatura("Cliente A", new BigDecimal("1500.00"), "24-09-2023");
+        ProcessadorBoletos processador = new ProcessadorBoletos();
+        processador.processa(boletos, fatura);
+
+        assertEquals(fatura.getValorTotal(), new BigDecimal("1500.00"));
+        assertTrue(fatura.isPaga());
+
+        List<Pagamento> pagamentos = fatura.getPagamentos();
+        assertEquals(pagamentos.size(), 3);
+        assertEquals(pagamentos.get(0).getTipo(), TipoPagamento.BOLETO);
+        assertEquals(pagamentos.get(1).getTipo(), TipoPagamento.BOLETO);
+        assertEquals(pagamentos.get(2).getTipo(), TipoPagamento.BOLETO);
+        assertEquals(pagamentos.get(0).getValorPago(), new BigDecimal("500.00"));
+        assertEquals(pagamentos.get(1).getValorPago(), new BigDecimal("400.00"));
+        assertEquals(pagamentos.get(2).getValorPago(), new BigDecimal("600.00"));
 
     }
 
-    
-    
 }

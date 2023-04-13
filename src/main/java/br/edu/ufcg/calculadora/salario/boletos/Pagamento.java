@@ -1,4 +1,4 @@
-package br.edu.ufcg.processador.boletos;
+package br.edu.ufcg.calculadora.salario.boletos;
 
 import java.math.BigDecimal;
 
@@ -14,7 +14,18 @@ public class Pagamento {
         this.tipo = tipo;
     }
 
-    
+    public BigDecimal getValorPago() {
+        return valorPago;
+    }
+
+    public String getData() {
+        return data;
+    }
+
+    public TipoPagamento getTipo() {
+        return tipo;
+    }
+
     public enum TipoPagamento {
         BOLETO
     }

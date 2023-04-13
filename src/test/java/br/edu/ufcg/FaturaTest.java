@@ -1,12 +1,14 @@
 package br.edu.ufcg;
+
 import org.junit.jupiter.api.Test;
-import br.edu.ufcg.processador.boletos.Fatura;
+
+import br.edu.ufcg.calculadora.salario.boletos.Fatura;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 import java.math.BigDecimal;
 
-class FaturaTest{
+class FaturaTest {
 
     private Fatura fatura;
 

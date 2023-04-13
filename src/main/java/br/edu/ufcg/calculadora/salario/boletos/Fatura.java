@@ -1,4 +1,4 @@
-package br.edu.ufcg.processador.boletos;
+package br.edu.ufcg.calculadora.salario.boletos;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
@@ -12,7 +12,6 @@ public class Fatura {
     private String nomeCliente;
     private boolean paga;
     private List<Pagamento> pagamentos;
-
 
     public Fatura(String data, BigDecimal bigDecimal, String nomeCliente) {
         this.data = data;

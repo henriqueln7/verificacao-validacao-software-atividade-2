@@ -1,14 +1,14 @@
-package br.edu.ufcg.processador.boletos;
+package br.edu.ufcg.calculadora.salario.boletos;
 
 import java.math.BigDecimal;
 
 public class Boleto {
-    private int codigo;
+    private String codigo;
     private String data;
     private BigDecimal valor;
-    
-    public Boleto(Integer codigo, String data, BigDecimal bigDecimal){
-        this.codigo = codigo;
+
+    public Boleto(String string, String data, BigDecimal bigDecimal) {
+        this.codigo = string;
         this.data = data;
         this.valor = bigDecimal;
     }
@@ -18,12 +18,16 @@ public class Boleto {
         return this.valor;
     }
 
-    public Integer getCodigo() {
+    public String getCodigo() {
         return this.codigo;
     }
 
     public String getData() {
         return this.data;
     }
-    
+
+    public BigDecimal getValorPago() {
+        return valor;
+    }
+
 }
