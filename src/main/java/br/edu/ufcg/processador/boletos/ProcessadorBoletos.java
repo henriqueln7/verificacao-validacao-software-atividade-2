@@ -12,7 +12,7 @@ public class ProcessadorBoletos {
             // valorTotalBoletos = valorTotalBoletos.add(boleto.getValorPago());
         }
 
-        if (valorTotalBoletos.compareTo(fatura.getValor()) > 0) {
+        if (valorTotalBoletos.compareTo(fatura.getValor()) >= 0) {
             fatura.setPaga(true);
         }
     }
