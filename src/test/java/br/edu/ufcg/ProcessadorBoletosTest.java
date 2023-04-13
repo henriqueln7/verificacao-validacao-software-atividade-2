@@ -1,3 +1,4 @@
+package br.edu.ufcg;
 import org.junit.jupiter.api.Test;
 import br.edu.ufcg.processador.boletos.Boleto;
 import br.edu.ufcg.processador.boletos.Fatura;

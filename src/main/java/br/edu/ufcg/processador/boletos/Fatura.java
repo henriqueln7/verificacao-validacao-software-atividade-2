@@ -10,9 +10,9 @@ public class Fatura {
     private String nomeCliente;
 
 
-    public Fatura(String data, BigDecimal valor, String nomeCliente) {
+    public Fatura(String data, BigDecimal bigDecimal, String nomeCliente) {
         this.data = data;
-        this.valor = valor;
+        this.valor = bigDecimal;
         this.nomeCliente = nomeCliente;
 
     }
