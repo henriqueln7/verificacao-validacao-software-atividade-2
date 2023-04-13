@@ -17,6 +17,6 @@ class BoletoTest {
         boleto = new Boleto("001", "12-04-2023", new BigDecimal("500.00"));
         assertEquals("001", boleto.getCodigo());
         assertEquals("12-04-2023", boleto.getData());
-        assertEquals(500, boleto.getValor());
+        assertEquals(new BigDecimal("500.00"), boleto.getValor());
     }
 }

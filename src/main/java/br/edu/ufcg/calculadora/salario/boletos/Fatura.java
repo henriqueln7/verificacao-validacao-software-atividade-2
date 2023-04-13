@@ -3,7 +3,6 @@ package br.edu.ufcg.calculadora.salario.boletos;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.function.BooleanSupplier;
 
 public class Fatura {
 
