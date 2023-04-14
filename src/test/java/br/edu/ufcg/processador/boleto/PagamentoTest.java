@@ -1,10 +1,11 @@
-package br.edu.ufcg;
+package br.edu.ufcg.processador.boleto;
 
-import static org.junit.jupiter.api.Assertions.*;
-import java.math.BigDecimal;
+import br.edu.ufcg.processador.boleto.Pagamento.TipoPagamento;
 import org.junit.jupiter.api.Test;
-import br.edu.ufcg.calculadora.salario.boletos.Pagamento;
-import br.edu.ufcg.calculadora.salario.boletos.Pagamento.TipoPagamento;
+
+import java.math.BigDecimal;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class PagamentoTest {
 

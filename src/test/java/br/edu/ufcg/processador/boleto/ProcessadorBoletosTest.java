@@ -1,18 +1,14 @@
-package br.edu.ufcg;
+package br.edu.ufcg.processador.boleto;
 
+import br.edu.ufcg.processador.boleto.Pagamento.TipoPagamento;
 import org.junit.jupiter.api.Test;
-
-import br.edu.ufcg.calculadora.salario.boletos.Boleto;
-import br.edu.ufcg.calculadora.salario.boletos.Fatura;
-import br.edu.ufcg.calculadora.salario.boletos.Pagamento;
-import br.edu.ufcg.calculadora.salario.boletos.ProcessadorBoletos;
-import br.edu.ufcg.calculadora.salario.boletos.Pagamento.TipoPagamento;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class ProcessadorBoletosTest {
 

@@ -1,12 +1,10 @@
-package br.edu.ufcg;
+package br.edu.ufcg.processador.boleto;
 
 import org.junit.jupiter.api.Test;
 
-import br.edu.ufcg.calculadora.salario.boletos.Boleto;
-
-import static org.junit.jupiter.api.Assertions.*;
-
 import java.math.BigDecimal;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class BoletoTest {
 

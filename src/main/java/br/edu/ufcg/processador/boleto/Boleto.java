@@ -1,4 +1,4 @@
-package br.edu.ufcg.calculadora.salario.boletos;
+package br.edu.ufcg.processador.boleto;
 
 import java.math.BigDecimal;
 

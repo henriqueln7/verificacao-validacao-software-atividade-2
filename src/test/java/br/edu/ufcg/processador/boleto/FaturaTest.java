@@ -1,13 +1,11 @@
-package br.edu.ufcg;
+package br.edu.ufcg.processador.boleto;
 
 import org.junit.jupiter.api.Test;
 
-import br.edu.ufcg.calculadora.salario.boletos.Fatura;
-import br.edu.ufcg.calculadora.salario.boletos.Pagamento;
-
-import static org.junit.jupiter.api.Assertions.*;
-
 import java.math.BigDecimal;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class FaturaTest {
 

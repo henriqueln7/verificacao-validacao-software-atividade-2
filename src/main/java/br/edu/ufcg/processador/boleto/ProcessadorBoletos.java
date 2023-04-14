@@ -1,9 +1,9 @@
-package br.edu.ufcg.calculadora.salario.boletos;
+package br.edu.ufcg.processador.boleto;
+
+import br.edu.ufcg.processador.boleto.Pagamento.TipoPagamento;
 
 import java.math.BigDecimal;
 import java.util.List;
-
-import br.edu.ufcg.calculadora.salario.boletos.Pagamento.TipoPagamento;
 
 public class ProcessadorBoletos {
 
