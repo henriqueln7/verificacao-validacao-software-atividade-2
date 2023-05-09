@@ -1,4 +1,4 @@
-package br.edu.ufcg.processardoFuncionais;
+package br.edu.ufcg.functionalTests;
 
 import br.edu.ufcg.processador.boleto.Boleto;
 import br.edu.ufcg.processador.boleto.Fatura;
@@ -15,7 +15,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 
-public class FuncionaisProcessadorBoletos {
+public class ProcessadorBoletosTesteFuncional {
 
     private ProcessadorBoletos processadorBoletos;
     private Fatura fatura;
