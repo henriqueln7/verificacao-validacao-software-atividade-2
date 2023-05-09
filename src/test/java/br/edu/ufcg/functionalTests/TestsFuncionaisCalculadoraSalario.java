@@ -1,5 +1,6 @@
-package br.edu.ufcg.calculadora.salario;
+package br.edu.ufcg.functionalTests;
 
+import br.edu.ufcg.calculadora.salario.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;

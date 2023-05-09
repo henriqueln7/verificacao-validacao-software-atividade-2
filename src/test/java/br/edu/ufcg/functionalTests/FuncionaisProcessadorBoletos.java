@@ -1,4 +1,4 @@
-package br.edu.ufcg.processardoFuncionais;
+package br.edu.ufcg.functionalTests;
 
 import br.edu.ufcg.processador.boleto.Boleto;
 import br.edu.ufcg.processador.boleto.Fatura;
