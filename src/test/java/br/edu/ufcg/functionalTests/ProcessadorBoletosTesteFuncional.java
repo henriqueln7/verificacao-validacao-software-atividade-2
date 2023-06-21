@@ -34,9 +34,9 @@ public class ProcessadorBoletosTesteFuncional {
         assertFalse(fatura.isPaga());
 
         List<Pagamento> pagamentos = fatura.getPagamentos();
-        assertEquals(pagamentos.size(), 2);
-        assertEquals(pagamentos.get(0).getTipo(), TipoPagamento.BOLETO);
-        assertEquals(pagamentos.get(1).getTipo(), TipoPagamento.BOLETO);
+        assertEquals(2, pagamentos.size());
+        assertEquals(TipoPagamento.BOLETO, pagamentos.get(0).getTipo());
+        assertEquals(TipoPagamento.BOLETO, pagamentos.get(1).getTipo());
         assertEquals(pagamentos.get(0).getValorPago(), new BigDecimal("800.00"));
         assertEquals(pagamentos.get(1).getValorPago(), new BigDecimal("699.00"));
     }
@@ -52,12 +52,12 @@ public class ProcessadorBoletosTesteFuncional {
         processador.processa(boletos, fatura);
 
         assertEquals(fatura.getValorTotal(), new BigDecimal("1500.00"));
-        assertFalse(fatura.isPaga());
+        assertTrue(fatura.isPaga());
 
         List<Pagamento> pagamentos = fatura.getPagamentos();
-        assertEquals(pagamentos.size(), 2);
-        assertEquals(pagamentos.get(0).getTipo(), TipoPagamento.BOLETO);
-        assertEquals(pagamentos.get(1).getTipo(), TipoPagamento.BOLETO);
+        assertEquals(2, pagamentos.size());
+        assertEquals(TipoPagamento.BOLETO, pagamentos.get(0).getTipo());
+        assertEquals(TipoPagamento.BOLETO, pagamentos.get(1).getTipo());
         assertEquals(pagamentos.get(0).getValorPago(), new BigDecimal("800.00"));
         assertEquals(pagamentos.get(1).getValorPago(), new BigDecimal("700.00"));
     }
@@ -76,11 +76,11 @@ public class ProcessadorBoletosTesteFuncional {
         assertTrue(fatura.isPaga());
 
         List<Pagamento> pagamentos = fatura.getPagamentos();
-        assertEquals(pagamentos.size(), 2);
-        assertEquals(pagamentos.get(0).getTipo(), TipoPagamento.BOLETO);
-        assertEquals(pagamentos.get(1).getTipo(), TipoPagamento.BOLETO);
-        assertEquals(pagamentos.get(0).getValorPago(), new BigDecimal("800.00"));
-        assertEquals(pagamentos.get(1).getValorPago(), new BigDecimal("701.00"));
+        assertEquals(2, pagamentos.size());
+        assertEquals(TipoPagamento.BOLETO, pagamentos.get(0).getTipo());
+        assertEquals(TipoPagamento.BOLETO, pagamentos.get(1).getTipo());
+        assertEquals(new BigDecimal("800.00"), pagamentos.get(0).getValorPago());
+        assertEquals(new BigDecimal("701.00"), pagamentos.get(1).getValorPago());
     }
 
     @Test
@@ -91,11 +91,11 @@ public class ProcessadorBoletosTesteFuncional {
         ProcessadorBoletos processador = new ProcessadorBoletos();
         processador.processa(boletos, fatura);
 
-        assertEquals(fatura.getValorTotal(), new BigDecimal("1500.00"));
-        assertTrue(!fatura.isPaga());
+        assertEquals(new BigDecimal("1500.00"), fatura.getValorTotal());
+        assertFalse(fatura.isPaga());
 
         List<Pagamento> pagamentos = fatura.getPagamentos();
-        assertEquals(pagamentos.size(), 0);
+        assertEquals(0, pagamentos.size());
 
     }
 
